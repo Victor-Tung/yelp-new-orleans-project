@@ -1,0 +1,5 @@
+data/raw/
+*.json
+.Rhistory
+.RData
+.Rproj.user/

@@ -1,5 +1,5 @@
-data/raw/
-*.json
+data/
+*.Rproj
 .Rhistory
 .RData
 .Rproj.user/

@@ -1,4 +1,4 @@
-# yelp-new-orleans-project
+# New Orleans Yelp Project
 
 This repository currently contains the start of the Yelp New Orleans restaurant project
 
@@ -9,10 +9,11 @@ This repository currently contains the start of the Yelp New Orleans restaurant 
 
 ## Data files
 
-The original Yelp JSON files are stored locally in `data/raw/` but are excluded from GitHub because they are very large.
+The original Yelp JSON files are stored locally in `data/raw/` but are excluded from GitHub because they are very large
+
+Note that the filtered RDS files are included in the repo but cannot be previewed directly on GitHub because they are binary R data files
 
 The filtered files are:
-
 - `data/new_orleans/business_new_orleans.rds`
 - `data/new_orleans/reviews_new_orleans.rds`
 

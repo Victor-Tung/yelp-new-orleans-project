@@ -1,0 +1,4 @@
+"geographic_system","number_of_areas","restaurants_assigned","unmatched_restaurants","smallest_area_count","largest_area_count"
+"ZCTA",28,1057,0,1,289
+"Census tract",130,1030,27,1,192
+"Census block group",209,1030,27,1,67

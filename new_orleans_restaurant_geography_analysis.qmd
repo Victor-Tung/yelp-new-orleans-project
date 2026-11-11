@@ -1,0 +1,143 @@
+---
+title: "New Orleans Restaurant Geographic Analysis"
+subtitle: "Comparing Geographic Systems for Selected New Orleans Restaurants"
+author: "Victor Tung"
+format:
+  html:
+    toc: true
+    code-fold: false
+    embed-resources: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+## Research question for this stint
+
+Which geographic system provides the clearest way to compare the locations and business ratings of selected restaurants in New Orleans?
+
+This file examines selected restaurants across New Orleans. The analysis compares three ways of dividing the city: ZIP Code Tabulation Areas (ZCTAs), Census tracts, and Census block groups. The main goal is to determine which system makes restaurant locations and business ratings easiest to compare.
+
+## Data and workflow
+
+The analysis uses the filtered Yelp business and review data saved in the following RDS files:
+
+- `data/new_orleans/business_new_orleans.rds`
+- `data/new_orleans/reviews_new_orleans.rds`
+
+The analysis code is available in [`R/new_orleans_restaurant_geography_analysis.R`](R/new_orleans_restaurant_geography_analysis.R).
+
+First, I separated the restaurant categories listed in the Yelp data. I then selected a related group of New Orleans restaurants and connected those businesses to their reviews using `business_id`. Finally, I converted the restaurant coordinates into map points and matched the points to official Census boundaries.
+
+```{r}
+#| include: false
+
+# Run the analysis script to create the tables and figures used in this report.
+source("R/new_orleans_restaurant_geography_analysis.R")
+```
+
+## Restaurant categories
+
+I selected the following restaurant categories:
+
+- Cajun/Creole
+- Seafood
+- Southern
+- Sandwiches
+- Fast Food
+- Food Trucks
+
+I chose these categories because I wanted to find some food that was specific to New Orleans while still having casual and convenient dining options. A business is included if its Yelp category list contained at least one of these categories. This rule allows a restaurant to belong to more than one category while preventing completely unrelated businesses from even entering the data for analysis.
+
+The complete category-count table is available here:
+
+[`tables/all_restaurant_category_counts.csv`](tables/all_restaurant_category_counts.csv)
+
+```{r}
+#| echo: false
+
+category_counts <- read.csv(
+  "tables/all_restaurant_category_counts.csv",
+  stringsAsFactors = FALSE
+)
+
+knitr::kable(
+  head(category_counts, 20),
+  caption = "Top 20 most common restaurant categories in the New Orleans business data"
+)
+```
+
+## Selected restaurant data
+
+The analysis script made also creates summaries of the selected restaurants and their reviews:
+
+- [`tables/selected_data_summary.csv`](tables/selected_data_summary.csv)
+- [`tables/selected_restaurants.csv`](tables/selected_restaurants.csv)
+
+I also filtered the review data so that it only includes reviews for the selected restaurants. This keeps reviews for unrelated businesses out of the rest of the analysis.
+
+## Restaurant locations
+
+The selected restaurants were converted from latitude and longitude values into spatial points that are used in the maps.
+
+![Selected New Orleans restaurants](figures/new_orleans_restaurant_locations.png)
+
+## Geographic systems
+
+I compared three geographic systems:
+
+1. ZIP Code Tabulation Areas (ZCTAs)
+2. Census tracts
+3. Census block groups
+
+ZCTAs are Census approximations of ZIP code service areas. Census tracts and block groups are smaller statistical areas. I compared all three systems because the restaurants distribution can look different depending on how the city is divided. Larger areas may provide more stable counts, while smaller areas may show more detail but contain too few restaurants for reliable comparisons.
+
+## Geographic comparison
+
+The comparison table reports the number of areas, restaurants assigned, unmatched restaurants, and the smallest and largest restaurant counts per area.
+
+[`tables/geographic_system_comparison.csv`](tables/geographic_system_comparison.csv)
+
+```{r}
+#| echo: false
+
+geography_comparison <- read.csv(
+  "tables/geographic_system_comparison.csv",
+  stringsAsFactors = FALSE
+)
+
+knitr::kable(
+  geography_comparison,
+  caption = "Comparison of geographic systems for the selected restaurants"
+)
+```
+
+## Restaurants by ZCTA
+
+![Selected restaurants by ZCTA](figures/restaurants_by_zcta.png)
+
+## Restaurants by Census tract
+
+![Selected restaurants by Census tract](figures/restaurants_by_census_tract.png)
+
+## Restaurants by Census block group
+
+![Selected restaurants by Census block group](figures/restaurants_by_block_group.png)
+
+## Geographic system selection
+
+I compared ZCTAs, Census tracts, and Census block groups. ZCTAs included all 1,057 selected restaurants across 28 areas, with no unmatched restaurants. Census tracts included 1,030 restaurants across 130 areas, while block groups included 1,030 restaurants across 209 areas. Both tracts and block groups had 27 unmatched restaurants, or about 2.6%. The smaller geographic systems provided more detail but also created more areas where there were very few restaurants.
+
+I selected ZCTAs because they covered all restaurants, were easier to understand, and produced the clearest map. The maps showed that restaurants were mainly concentrated in central New Orleans, with fewer restaurants in outer areas. However, the number of restaurants varied greatly between ZCTAs, so some area comparisons should be interpreted carefully. Though, this is most likely due to the specific categories I selected. 
+
+## Source code and outputs, repo location
+
+- Analysis code:(R/new_orleans_restaurant_geography_analysis.R)
+- All category counts:(tables/all_restaurant_category_counts.csv)
+- Selected restaurant summary:(tables/selected_data_summary.csv)
+- Geographic comparison table:(tables/geographic_system_comparison.csv)
+- Restaurant-location map:(figures/new_orleans_restaurant_locations.png)
+- ZCTA map:(figures/restaurants_by_zcta.png)
+- Census tract map:(figures/restaurants_by_census_tract.png)
+- Census block group map:(figures/restaurants_by_block_group.png)

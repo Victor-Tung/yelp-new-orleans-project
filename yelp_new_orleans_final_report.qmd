@@ -249,7 +249,7 @@ The graph compares each restaurant’s regular average review rating with its re
 
 ## Final top-ten restaurants
 
-The final top-ten table ranks selected restaurants by reviewer-adjusted score among restaurants with at least five reviews from eligible reviewers. This minimum reduces the chance that a restaurant is ranked highly because of only one or two adjusted/false reviews. In the rendered results, the top adjusted scores were led by 3 Southern Girls, Stella's Donation Cafe and Coffee Shop, Cafe Iguana, and Ms. Beasley's. Other restaurants in the top ten included Mona's Cafe, Dirty Dishes, Rainbow Grocery, Shank Charcuterie, The Neutral Ground Bar & Grill, and Bonafried. These rankings should be interpreted together with the number of eligible reviews because a high adjusted score based on a small number of reviews is less reliable.
+The final top-ten table ranks selected restaurants by average_normalized_mean_score among restaurants with at least five reviews from eligible reviewers. This minimum reduces the chance that a restaurant is ranked highly because of only one or two adjusted/false reviews. In the rendered results, the top adjusted scores were led by 3 Southern Girls, Stella's Donation Cafe and Coffee Shop, Cafe Iguana, and Ms. Beasley's. Other restaurants in the top ten included Mona's Cafe, Dirty Dishes, Rainbow Grocery, Shank Charcuterie, The Neutral Ground Bar & Grill, and Bonafried. These rankings should be interpreted together with the number of eligible reviews because a high adjusted score based on a small number of reviews is less reliable.
 
 [Top-ten restaurant results](tables/top_ten_restaurants.csv)
 
@@ -280,7 +280,7 @@ The Yelp dataset does not represent every restaurant in New Orleans. The Yelp ci
 
 This analysis examined 1,057 selected New Orleans restaurants and 299,924 reviews across six related categories. ZCTAs were selected as the main geographic system because they assigned all restaurants, were easier to understand, and produced the clearest map. Census tracts and block groups provided more detail but left 27 restaurants unmatched and contained many areas with very few restaurants.
 
-Using reviewer-adjusted scores and requiring at least five eligible reviews, the top ten restaurants were 3 Southern Girls, Stella’s Donation Cafe and Coffee Shop, Cafe Iguana, Ms. Beasley’s, Mona’s Cafe, Dirty Dishes, Rainbow Grocery, Shank Charcuterie, The Neutral Ground Bar & Grill, and Bonafried. These results show how reviewer habits can affect restaurant rankings, but the adjusted score should be viewed as an additional measure rather than a perfect measure of quality. Because the Yelp data are a historical snapshot through 2022, the results may not reflect current restaurant ratings, ownership, or availability.
+Using average_normalized_mean_score and requiring at least five eligible reviews, the top ten restaurants were 3 Southern Girls, Stella’s Donation Cafe and Coffee Shop, Cafe Iguana, Ms. Beasley’s, Mona’s Cafe, Dirty Dishes, Rainbow Grocery, Shank Charcuterie, The Neutral Ground Bar & Grill, and Bonafried. These results show how reviewer habits can affect restaurant rankings, but the adjusted score should be viewed as an additional measure rather than a perfect measure of quality. Because the Yelp data are a historical snapshot through 2022, the results may not reflect current restaurant ratings, ownership, or availability.
 
 ## Source code and outputs location
 

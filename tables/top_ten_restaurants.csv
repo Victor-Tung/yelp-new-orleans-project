@@ -1,0 +1,11 @@
+"business_id","business_name","review_count","latitude","longitude","number_of_reviews_all_reviewers","average_stars_all_reviewers","median_stars_all_reviewers","number_of_reviews_eligible_reviewers","average_stars_eligible_reviewers","average_normalized_mean_score","median_normalized_mean_score","average_normalized_median_score"
+"OSyRjc5SLixdhnvpsqg5MA","3 Southern Girls",21,29.9592843,-90.1719775,21,4.9,5,7,4.9,1.43439966375566,1.42857142857143,1.28571428571429
+"n07XNC-z_uWZWG8xJZ8YfA","Stella's Donation Cafe and Coffee Shop",11,29.9561495,-90.1279653,12,5,5,5,5,1.21578468899522,1.18181818181818,1.2
+"OWuVx8OK_f-wNDelg9XCyQ","Cafe Iguana",9,29.9604216,-90.0640178,9,4.4,4,5,4.8,1.01759854180907,1.14285714285714,0.7
+"Kkk5wX6odyIK-ucQXNgd-w","Ms. Beasley's",35,29.955454268,-90.076040456,36,4.5,5,10,4.9,0.994261474290419,0.958333333333333,0.5
+"BokW_cq-5ZIKP2kvLtzrNQ","Mona's Cafe",21,29.94425,-90.062179,22,3.6,4.5,6,4.3,0.920242362177846,0.968253968253968,1
+"Z0GBtnKBhrpQFdv0luGr8g","Dirty Dishes",16,29.969436,-90.052175,16,4.4,5,8,4.6,0.897139913763489,0.858465085638999,0.75
+"0169EQn9SEi1bocoX5Ps1w","Rainbow Grocery",21,29.9205661,-90.1071195,21,4.6,5,7,4.7,0.875638647067219,0.727272727272728,0.714285714285714
+"oo88TE2jCxYfIen_oWFjdA","Shank Charcuterie",44,29.9686757773,-90.0528472831,44,4.7,5,13,4.7,0.867068605150001,0.875,0.807692307692308
+"fUUNiG5x6wP84ty5GoqtRw","The Neutral Ground Bar & Grill",18,29.9418931775,-90.0749949524,20,4.8,5,8,4.8,0.823495707191359,0.960474308300395,0.5
+"YIWBvaCSeIKLcXAQWkvz9w","Bonafried",28,29.9219677,-90.1073935,31,4.5,5,22,4.7,0.775543043266394,0.876646903820817,0.636363636363636

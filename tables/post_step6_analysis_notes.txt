@@ -1,0 +1,8 @@
+Selected categories:
+cajun/creole, seafood, southern, sandwiches, fast food, food trucks
+
+Reviewer eligibility threshold:
+At least 5 reviews within the selected category group.
+
+Primary reviewer-adjusted score:
+Mean-normalized score: individual stars minus reviewer mean.

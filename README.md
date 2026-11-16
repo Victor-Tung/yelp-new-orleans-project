@@ -47,7 +47,7 @@ The analysis includes:
 │   ├── import.R
 │   ├── clean.R
 │   ├── new_orleans_restaurant_geography_analysis.R
-│   └── post_step6_final_analysis.R
+│   └── top_ten_analysis.R
 ├── figures/
 ├── tables/
 └── data/

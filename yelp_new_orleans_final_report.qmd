@@ -15,13 +15,13 @@ execute:
 
 ## Executive summary
 
-This project uses the Yelp Open Dataset to study selected restaurants in New Orleans. I compare restaurant categories, geographic systems, business ratings, review activity, and reviewer-adjusted scores. I compare ZIP Code Tabulation Areas (ZCTAs), Census tracts, and Census block groups to determine which system gives the clearest and most complete view of restaurant locations. For the current analysis, I selected ZCTAs as the main geographic system. ZCTAs assigned all selected restaurants, were easier to understand, and produced the clearest map. Census tracts and block groups provided more detail, but they were more complex and left some restaurants unmatched.
+This project uses the Yelp Open Dataset to study selected restaurants in New Orleans. I compare restaurant categories, geographic systems, business ratings, review activity, and reviewer-adjusted scores. I compare ZIP Code Tabulation Areas (ZCTAs), Census tracts, and Census block groups to determine which system gives the clearest and most complete view of restaurant locations. For the current analysis, I selected ZCTAs as the main geographic system. ZCTAs assigned all selected restaurants, were easier to understand, and produced the clearest map. Census tracts and block groups provided more detail, but they were more complex and left some restaurants unmatched. Using ZCTAs I performed an analysis to find the top 10 best reviewed restaurants in the New Orleans region. 
 
 ## Research question
 
-Where can someone find the strongest selected restaurants in New Orleans, and which geographic system provides the clearest way to compare them?
+Where can someone find the 10 best restaurants in New Orleans, and which geographic system provides the clearest way to compare them?
 
-“Strongest” is evaluated using business ratings, review volume, and reviewer-adjusted scores. This analysis does not claim that Yelp represents every restaurant in New Orleans.
+“best” is evaluated using business ratings, review volume, and reviewer-adjusted scores. This analysis does not claim that Yelp represents every restaurant in New Orleans.
 
 ## Data and project structure
 
@@ -29,11 +29,11 @@ The project uses the Yelp Open Dataset business and review files. The original J
 
 The main source files are:
 
-- `R/import.R` imports the large Yelp JSON files.
-- `R/clean.R` filters the data to New Orleans restaurants and saves the RDS files.
-- `R/new_orleans_restaurant_geography_analysis.R` creates the category and geographic outputs.
-- `R/post_step6_final_analysis.R` creates the reviewer analysis, final rankings, and final figures.
-- `new_orleans_restaurant_geography_analysis.qmd` contains the earlier geographic-system analysis.
+- R/import.R imports the large Yelp JSON files.
+- R/clean.R filters the data to New Orleans restaurants and saves the RDS files.
+- R/new_orleans_restaurant_geography_analysis.R creates the category and geographic outputs.
+- R/post_step6_final_analysis.R creates the reviewer analysis, final rankings, and final figures.
+- new_orleans_restaurant_geography_analysis.qmd contains the earlier geographic-system analysis.
 
 The final report uses the tables and figures created by the analysis script.
 
@@ -48,7 +48,7 @@ source("R/post_step6_final_analysis.R")
 
 ## Large-data management
 
-I used `jsonlite::stream_in()` to import the large JSON files, kept only the columns needed for the project, and saved the filtered New Orleans data as compressed RDS files. This reduced the amount of data needed for later analysis. The raw JSON files remain local and are excluded from GitHub because of their size. But, the necessary RDS files are uploaded to GitHub. The review file contains millions of records, so the reviewer analysis can take longer and use more memory than the geographic summaries. The final HTML report contains the completed tables and figures and should not require a rerun for the large-data computations.
+I used jsonlite::stream_in() to import the large JSON files, kept only the columns needed for the project, and saved the filtered New Orleans data as compressed RDS files. This reduced the amount of data needed for later analysis. The raw JSON files remain local and are excluded from GitHub because of their size. But, the necessary RDS files are uploaded to GitHub. The review file contains millions of records, so the reviewer analysis can take longer and use more memory than the geographic summaries. The final HTML report contains the completed tables and figures and should not require a rerun for the large-data computations.
 
 ## Restaurant category selection
 
@@ -274,7 +274,7 @@ The final map shows the top-ten restaurants over the selected ZCTA boundaries. T
 
 ## Limitations
 
-The Yelp dataset does not represent every restaurant in New Orleans. The Yelp `city` field and Census boundaries may also differ because postal-city labels and geographic boundaries are not identical. Areas with very few restaurants have less stable averages, and reviewer-adjusted scores depend on the minimum reviewer threshold. Finally, the selected categories reflect the research question and are not a complete definition of all New Orleans food businesses. As an additional note, the available data we were working with is from 2020, so many of these restaurants most likely have slightly different ratings or could have possibly closed by now.
+The Yelp dataset does not represent every restaurant in New Orleans. The Yelp city field and Census boundaries may also differ because postal-city labels and geographic boundaries are not identical. Areas with very few restaurants have less stable averages, and reviewer-adjusted scores depend on the minimum reviewer threshold. Finally, the selected categories reflect the research question and are not a complete definition of all New Orleans food businesses. As an additional note, the available data we were working with is from 2020, so many of these restaurants most likely have slightly different ratings or could have possibly closed by now.
 
 ## Conclusion
 
@@ -332,10 +332,10 @@ The response created a modular R workflow with separate files for data import, c
 **How I used it:**  
 I created the following files:
 
-- `R/import.R` for importing the large Yelp JSON files.
-- `R/clean.R` for filtering New Orleans restaurants and saving the RDS files.
-- `R/new_orleans_restaurant_geography_analysis.R` for category analysis, spatial joins, geographic summaries, and maps.
-- `R/top_ten_analysis.R` for reviewer-adjusted scores, rankings, the top-ten table, the final map, and the comparison plot.
+- R/import.R for importing the large Yelp JSON files.
+- R/clean.R for filtering New Orleans restaurants and saving the RDS files.
+- R/new_orleans_restaurant_geography_analysis.R for category analysis, spatial joins, geographic summaries, and maps.
+- R/top_ten_analysis.R for reviewer-adjusted scores, rankings, the top-ten table, the final map, and the comparison plot.
 
 I ran the files in order and checked that the expected tables and figures were created.
 
@@ -345,7 +345,7 @@ I ran the files in order and checked that the expected tables and figures were c
 “How should I organize a GitHub repository for the Yelp New Orleans project, and which files should be included?”
 
 **Output and use:**  
-The response suggested separate files for importing, cleaning, analysis, tables, figures, the QMD report, and the README. It also recommended excluding the large raw Yelp JSON files with `.gitignore`.
+The response suggested separate files for importing, cleaning, analysis, tables, figures, the QMD report, and the README. It also recommended excluding the large raw Yelp JSON files with .gitignore.
 
 **How I used it:**  
 I organized the project into separate folders for R scripts, tables, figures, and local data files. I kept the raw JSON and RDS files local and excluded them from GitHub.
@@ -356,15 +356,15 @@ I organized the project into separate folders for R scripts, tables, figures, an
 “How can I import the large Yelp JSON files into R without loading unnecessary columns?”
 
 **Output and use:**  
-The response recommended using `jsonlite::stream_in()` and selecting only the columns needed for the project.
+The response recommended using jsonlite::stream_in() and selecting only the columns needed for the project.
 
 **How I used it:**  
-I used `stream_in()` in `R/import.R` and kept fields such as `business_id`, business name, city, state, latitude, longitude, stars, review count, and categories. I then filtered the data to New Orleans restaurants in `R/clean.R` and saved the results as compressed RDS files.
+I used stream_in() in R/import.R and kept fields such as business_id, business name, city, state, latitude, longitude, stars, review count, and categories. I then filtered the data to New Orleans restaurants in R/clean.R and saved the results as compressed RDS files.
 
 ### Troubleshooting the review import
 
 **Prompt:**  
-“What does the `premature EOF` error mean when importing the review JSON file?”
+“What does the premature EOF error mean when importing the review JSON file?”
 
 **Output and use:**  
 The response explained that the review file was incomplete or damaged, meaning that the file ended before the final JSON record was complete.
@@ -375,13 +375,13 @@ I checked the raw file, re-extracted or replaced the damaged file, and reran the
 ### Fixing missing objects in R
 
 **Prompt:**  
-“Why does R say that `business` or `new_orleans_reviews` cannot be found?”
+“Why does R say that business or new_orleans_reviews cannot be found?”
 
 **Output and use:**  
 The response explained that objects created in one script are not automatically available in a new R session unless the script is sourced or the objects are saved and loaded.
 
 **How I used it:**  
-I separated the workflow into import, cleaning, and analysis files. The later scripts use `readRDS()` so they do not depend on manually created objects remaining in the console.
+I separated the workflow into import, cleaning, and analysis files. The later scripts use readRDS() so they do not depend on manually created objects remaining in the console.
 
 ### Selecting restaurant categories
 
@@ -400,7 +400,7 @@ I selected Cajun/Creole, Seafood, Southern, Sandwiches, Fast Food, and Food Truc
 “How should I compare ZCTAs, Census tracts, and Census block groups for the Step 6 requirement?”
 
 **Output and use:**  
-The response recommended converting restaurant coordinates into `sf` points, using spatial joins, counting restaurants by area, calculating ratings, checking unmatched restaurants, and comparing maps.
+The response recommended converting restaurant coordinates into sf points, using spatial joins, counting restaurants by area, calculating ratings, checking unmatched restaurants, and comparing maps.
 
 **How I used it:**  
 I compared all three systems and created a geographic comparison table. ZCTAs assigned all 1,057 selected restaurants, while Census tracts and block groups each left 27 restaurants unmatched. I selected ZCTAs because they provided complete coverage and were easier for a general audience to understand.
@@ -408,7 +408,7 @@ I compared all three systems and created a geographic comparison table. ZCTAs as
 ### Fixing the CRS spatial-join error
 
 **Prompt:**  
-“What does `st_crs(x) == st_crs(y) is not TRUE` mean?”
+“What does st_crs(x) == st_crs(y) is not TRUE mean?”
 
 **Output and use:**  
 The response explained that the restaurant points and boundary polygons used different coordinate reference systems.
@@ -419,10 +419,10 @@ I transformed the boundary data to the same CRS as the restaurant points before 
 ### Fixing the ZCTA boundary-year error
 
 **Prompt:**  
-“Why does `tigris::zctas()` say that the 2024 CB ZCTA file has not been released?”
+“Why does tigris::zctas() say that the 2024 CB ZCTA file has not been released?”
 
 **Output and use:**  
-The response explained that the 2024 Census ZCTA file was unavailable through `tigris`.
+The response explained that the 2024 Census ZCTA file was unavailable through tigris.
 
 **How I used it:**  
 I changed the ZCTA boundary request to use the available 2020 file:
@@ -437,16 +437,16 @@ tigris::zctas(
 
 I also used 2020 geography files consistently for the other Census systems.
 
-### Handling the `utf8.dll` problem
+### Handling the utf8.dll problem
 
 **Prompt:**  
-“How can I continue when R gives an Application Control error involving `utf8.dll`?”
+“How can I continue when R gives an Application Control error involving utf8.dll?”
 
 **Output and use:**  
 The response explained that the problem was related to printing or loading a blocked package component, not necessarily an error in the data.
 
 **How I used it:**  
-I avoided printing very large tibbles to the console and instead wrote results to CSV files. I used functions such as `write.csv()`, `head()`, and `dim()` to inspect outputs without printing millions of rows.
+I avoided printing very large tibbles to the console and instead wrote results to CSV files. I used functions such as write.csv(), head(), and dim() to inspect outputs without printing millions of rows.
 
 ### Creating reviewer-adjusted scores
 
@@ -471,10 +471,10 @@ I created separate results using all reviewers and using eligible reviewers.
 ### Fixing the reviewer-analysis error
 
 **Prompt:**  
-“What causes the `auto_copy()` error when creating the reviewer eligibility summary?”
+“What causes the auto_copy() error when creating the reviewer eligibility summary?”
 
 **Output and use:**  
-The response identified a naming conflict caused by using `eligible_reviewers` both as a data frame and as a column name inside the same `tibble()` call.
+The response identified a naming conflict caused by using eligible_reviewers both as a data frame and as a column name inside the same tibble() call.
 
 **How I used it:**  
 I calculated the reviewer counts before creating the summary table:
@@ -506,7 +506,7 @@ I calculated the mean of the individual review scores and rounded that review-ba
 “Why does the top-ten map show Alaska, and how can I make it focus on New Orleans?”
 
 **Output and use:**  
-The response explained that `tigris::zctas()` returns nationwide ZCTA boundaries unless they are filtered or cropped.
+The response explained that tigris::zctas() returns nationwide ZCTA boundaries unless they are filtered or cropped.
 
 **How I used it:**  
 I restricted the final map to a New Orleans bounding box:
